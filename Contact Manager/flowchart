@@ -1,0 +1,35 @@
+Server.js
+Main server of applicatoin will always be running
+
+1.Connect with Mongo DB importing file dbConnection.js
+2.ErrorHandler middleware importing from errorHandler.js using app.use()
+  To handle error in each request we use app.use()
+3. importing .env file for Enviroment Variables
+
+/config/dbConnection.js
+
+connectDb() method will connect application to DB
+So mongoose.connect() will require connection string as argument then it will connect 
+By using mongoose.connect() in the main server file, you ensure that the database connection is properly established and available throughout your application. It centralizes the connection initialization using connection pooling 
+Once you connect the nodejs application with mongoDB then you can peroform CRUD Operations
+and various features to access MongoDB 
+
+/models/contactModel.js
+Here we created a schema the structure of how data will be stored inside collection in each document
+so then the schema will be used to create a model which associate schema to collection 
+Then we export the model so that we can use the CRUD or more operations for DB 
+same as for userModel.js
+
+/middleware
+Middleware have access to request and response object and it runs in all the incomming request 
+1.errorHandler
+2.validateToken
+
+/routes
+This contain all the routes of our application and we imported all our controllers for each and every route  
+imported middleware validateToken.js to authenticate from user via app.use
+so whenever any request comes in form of /api/contacts first and foremost validateToken middleware will be exceuted 
+
+
+/controllers
+This contain all the logics of our routes
